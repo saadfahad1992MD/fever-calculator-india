@@ -389,7 +389,7 @@ function AppEnglish({ onChangeLanguage }) {
         } else if (weightNum >= 17 && weightNum <= 25) {
           appropriateDose = 25
         } else {
-          setResult({ error: 'डाइक्लोफेनाक केवल 8-25 किलोग्राम वजन के लिए उपयुक्त है' })
+          setResult({ error: 'Diclofenac is suitable for weights 8-25 kg only' })
           return
         }
         
@@ -646,7 +646,7 @@ function AppEnglish({ onChangeLanguage }) {
               title="Click to Enlarge"
             >
               <ZoomIn className="w-3 h-3" />
-              <span>बड़ा करें</span>
+              <span>Enlarge</span>
             </button>
           </div>
           <div className="flex-1">
@@ -735,7 +735,7 @@ function AppEnglish({ onChangeLanguage }) {
               }}
               className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-md transition-colors duration-200"
             >
-              <span>खुराक की गणना करें</span>
+              <span>Calculate Dose</span>
               <span>💊</span>
             </button>
           </div>
@@ -747,7 +747,7 @@ function AppEnglish({ onChangeLanguage }) {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
-      <LanguageToggle currentLanguage="hi" onToggle={onChangeLanguage} />
+      <LanguageToggle currentLanguage="en" onToggle={onChangeLanguage} />
       {/* Top Brand Header */}
       <div className="sticky top-0 bg-white text-gray-800 py-6 shadow-lg border-b-2 border-gray-100 z-40">
         <div className="max-w-4xl mx-auto px-4">
@@ -760,7 +760,7 @@ function AppEnglish({ onChangeLanguage }) {
             {/* Text Container */}
             <div className="text-center">
               <h1 className="font-bold text-3xl tracking-wide">
-                <span className="text-red-600 text-4xl">फीवर कैल्क</span>
+                <span className="text-red-600 text-4xl">Fever Calc</span>
               </h1>
             </div>
           </div>
@@ -773,11 +773,11 @@ function AppEnglish({ onChangeLanguage }) {
           <div className="text-center">
             <div className="flex items-center justify-center gap-2 mb-2">
               <h1 className="text-2xl font-bold text-gray-900">
-                बच्चों के लिए बुखार की दवा और दर्द निवारक खुराक कैलकुलेटर
+                Fever Reducer & Pain Reliever Dosage Calculator for Children
               </h1>
             </div>
             <p className="text-gray-600 mb-3">
-              वजन और दवा के प्रकार के आधार पर अपने बच्चे के लिए सही खुराक की गणना करें
+              Calculate the correct dose for your child based on weight and medication type
             </p>
           </div>
         </div>
@@ -816,7 +816,7 @@ function AppEnglish({ onChangeLanguage }) {
                   {/* Step 1: Age Category Selection */}
                   <div className="space-y-3">
                     <label className="text-sm font-medium flex items-center gap-1">
-                      आपके बच्चे की उम्र कितनी है?
+                      How old is your child?
                       <span className="text-red-500 text-xs">*</span>
                     </label>
                     <div className="grid grid-cols-2 gap-3">
@@ -832,8 +832,8 @@ function AppEnglish({ onChangeLanguage }) {
                       >
                         <div className="text-center">
                           <div className="text-2xl mb-1">👶</div>
-                          <div>1 साल से कम</div>
-                          <div className="text-xs opacity-70">(1-12 महीने)</div>
+                          <div>Less than 1 year</div>
+                          <div className="text-xs opacity-70">(1-12 months)</div>
                         </div>
                       </Button>
                       <Button
@@ -848,8 +848,8 @@ function AppEnglish({ onChangeLanguage }) {
                       >
                         <div className="text-center">
                           <div className="text-2xl mb-1">🧒</div>
-                          <div>1 साल से ज्यादा</div>
-                          <div className="text-xs opacity-70">(1-14 साल)</div>
+                          <div>More than 1 year</div>
+                          <div className="text-xs opacity-70">(1-14 years)</div>
                         </div>
                       </Button>
                     </div>
@@ -859,11 +859,11 @@ function AppEnglish({ onChangeLanguage }) {
                   {ageCategory && (
                     <div className="space-y-2 animate-in slide-in-from-top-2 duration-300">
                       <label className="text-sm font-medium">
-                        {ageCategory === 'infant' ? 'महीनों में उम्र चुनें' : 'सालों में उम्र चुनें'}
+                        {ageCategory === 'infant' ? 'Select age in months' : 'Select age in years'}
                       </label>
                       <Select value={age} onValueChange={setAge}>
                         <SelectTrigger className="text-lg">
-                          <SelectValue placeholder={ageCategory === 'infant' ? 'महीने चुनें' : 'साल चुनें'} />
+                          <SelectValue placeholder={ageCategory === 'infant' ? 'Select months' : 'Select years'} />
                         </SelectTrigger>
                         <SelectContent>
                           {ageCategory === 'infant' ? (
@@ -892,7 +892,7 @@ function AppEnglish({ onChangeLanguage }) {
                       <label className="text-sm font-medium">Child's Weight (kg)</label>
                       <Select value={weight} onValueChange={setWeight}>
                         <SelectTrigger className="text-lg">
-                          <SelectValue placeholder="वजन चुनें" />
+                          <SelectValue placeholder="Select weight" />
                         </SelectTrigger>
                         <SelectContent>
                           {ageCategory === 'infant' ? (
@@ -936,7 +936,7 @@ function AppEnglish({ onChangeLanguage }) {
             {/* Medication Selection */}
             <div className="space-y-6">
               <div className="space-y-4">
-                <h2 className="text-xl font-semibold">दवा का प्रकार चुनें:</h2>
+                <h2 className="text-xl font-semibold">Select medication form:</h2>
                 
                 {/* Medication Type Selection */}
                 <div className="flex gap-4 justify-center">
@@ -946,7 +946,7 @@ function AppEnglish({ onChangeLanguage }) {
                     className="flex items-center gap-2 px-6 py-3"
                   >
                     <span>💧</span>
-                    <span>सिरप</span>
+                    <span>Syrup</span>
                   </Button>
                   <Button
                     variant={medicationType === 'suppository' ? 'default' : 'outline'}
@@ -954,7 +954,7 @@ function AppEnglish({ onChangeLanguage }) {
                     className="flex items-center gap-2 px-6 py-3"
                   >
                     <span>💊</span>
-                    <span>सपोजिटरी</span>
+                    <span>Suppositories</span>
                   </Button>
                 </div>
               </div>
@@ -965,7 +965,7 @@ function AppEnglish({ onChangeLanguage }) {
                   <div>
                     <div className="flex items-center gap-2 mb-4">
                       <div className="w-4 h-4 bg-blue-500 rounded-full"></div>
-                      <h3 className="text-lg font-semibold text-blue-700">पैरासिटामोल दवाएं</h3>
+                      <h3 className="text-lg font-semibold text-blue-700">Paracetamol medications</h3>
                     </div>
                     <div className="grid gap-4 md:grid-cols-2">
                       {medications.paracetamol.map(med => (
@@ -987,7 +987,7 @@ function AppEnglish({ onChangeLanguage }) {
                   <div>
                     <div className="flex items-center gap-2 mb-2">
                       <div className="w-4 h-4 bg-green-500 rounded-full"></div>
-                      <h3 className="text-lg font-semibold text-green-700">आइबूप्रोफेन दवाएं</h3>
+                      <h3 className="text-lg font-semibold text-green-700">Ibuprofen Medications</h3>
                       <Badge variant="outline" className="text-green-600">
                         Age over 6 months
                       </Badge>
@@ -999,7 +999,7 @@ function AppEnglish({ onChangeLanguage }) {
                         For fever or pain that doesn't respond to paracetamol, your doctor may recommend a stronger fever reducer or pain reliever such as ibuprofen, alternating with paracetamol every 4 hours if necessary
                       </p>
                       <p className="text-sm text-green-700 font-medium mt-2">
-                        <strong>नोट:</strong> आइबूप्रोफेन पैरासिटामोल के साथ कोई विरोध नहीं करता और एक साथ दिया जा सकता है
+                        <strong>Note:</strong> Ibuprofen does not interact with paracetamol and can be taken at the same time
                       </p>
                     </div>
                     
@@ -1043,7 +1043,7 @@ function AppEnglish({ onChangeLanguage }) {
                         For fever or pain that doesn't respond to paracetamol, your doctor may recommend a stronger fever reducer or pain reliever such as diclofenac suppositories
                       </p>
                       <p className="text-sm text-green-700 font-medium mt-2">
-                        <strong>नोट:</strong> Diclofenac suppositories do not interact with paracetamol, but they belong to the same family as ibuprofen syrup. Do not take them at the same time and leave 8 hours between them
+                        <strong>Note:</strong> Diclofenac suppositories do not interact with paracetamol, but they belong to the same family as ibuprofen syrup. Do not take them at the same time and leave 8 hours between them
                       </p>
                     </div>
                     
@@ -1091,7 +1091,7 @@ function AppEnglish({ onChangeLanguage }) {
             {/* Results */}
             <Card id="results-section" className="transition-all duration-500">
               <CardHeader>
-                <CardTitle>गणना का परिणाम</CardTitle>
+                <CardTitle>Calculation Result</CardTitle>
               </CardHeader>
               <CardContent>
                 {result ? (
@@ -1193,7 +1193,7 @@ function AppEnglish({ onChangeLanguage }) {
                   )
                 ) : (
                   <p className="text-gray-500 text-center py-8">
-                    खुराक की गणना करने के लिए बच्चे की उम्र और वजन दर्ज करें और दवा चुनें
+                    Enter child's age and weight and select medication to calculate dose
                   </p>
                 )}
               </CardContent>
@@ -1282,7 +1282,7 @@ function AppEnglish({ onChangeLanguage }) {
                                 Popular Brand Names
                               </h4>
                               <div className="text-purple-800 text-sm mb-3">
-                                Available forms: <strong>सिरप</strong>
+                                Available forms: <strong>Syrup</strong>
                               </div>
                               <div className="grid gap-2 text-purple-800 text-sm">
                                 <div>• Nurofen - Nurofen</div>
@@ -1571,7 +1571,7 @@ function AppEnglish({ onChangeLanguage }) {
                         <div className="bg-teal-50 p-3 md:p-4 rounded-lg mr-0 md:mr-11">
                           <div className="text-teal-800 space-y-2">
                             <p>
-                              <strong className="text-blue-600">पैरासिटामोल दवाएं</strong> can be taken on an empty stomach.
+                              <strong className="text-blue-600">Paracetamol medications</strong> can be taken on an empty stomach.
                             </p>
                             <p>
                               <strong className="text-red-600">Ibuprofen (Brufen) medications</strong> are preferably taken after food or a light meal.
