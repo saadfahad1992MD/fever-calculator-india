@@ -304,9 +304,9 @@ const suppositories = {
 }
 
 function AppEnglish({ onChangeLanguage, country = 'DEFAULT' }) {
-  // Select medication data based on country
-  const medicationsData = country === 'EG' ? medicationsEgyptEnglish : medications
-  const suppositoriesData = country === 'EG' ? suppositoriesEgyptEnglish : suppositories
+  // Use Indian medications for India version
+  const medicationsData = medicationsIndiaEnglish
+  const suppositoriesData = medicationsIndiaEnglish.suppositories || {}
   const [weight, setWeight] = useState('') // String for text input
   const [age, setAge] = useState('') // String for text input
   const [ageUnit, setAgeUnit] = useState('') // 'months' or 'years' - empty by default
