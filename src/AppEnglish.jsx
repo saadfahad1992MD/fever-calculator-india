@@ -42,6 +42,8 @@ import rofenac25SuppImg from './assets/suppositories/rofenac_25.webp'
 import voltaren12_5SuppImg from './assets/suppositories/voltaren_12_5.jpg'
 import voltaren25SuppImg from './assets/suppositories/voltaren_25.webp'
 
+// Saudi medications - replaced with Indian medications
+/*
 const medications = {
   paracetamol: [
     {
@@ -303,10 +305,12 @@ const suppositories = {
   ]
 }
 
-function AppEnglish({ onChangeLanguage, country = 'DEFAULT' }) {
-  // Use Indian medications for India version
-  const medicationsData = medicationsIndiaEnglish
-  const suppositoriesData = medicationsIndiaEnglish.suppositories || {}
+*/
+
+// Use Indian medications database (English)
+const medications = medicationsIndiaEnglish;
+
+function AppEnglish({ onChangeLanguage }) {
   const [weight, setWeight] = useState('') // String for text input
   const [age, setAge] = useState('') // String for text input
   const [ageUnit, setAgeUnit] = useState('') // 'months' or 'years' - empty by default
@@ -468,8 +472,8 @@ function AppEnglish({ onChangeLanguage, country = 'DEFAULT' }) {
     if (!weightNum) return []
     
     // Get all suppositories from the suppositories object
-    const paracetamolSupps = suppositoriesData.paracetamol || []
-    const diclofenacSupps = suppositoriesData.diclofenac || []
+    const paracetamolSupps = suppositories.paracetamol || []
+    const diclofenacSupps = suppositories.diclofenac || []
     
     const allSuppositories = [...paracetamolSupps, ...diclofenacSupps]
     
@@ -964,7 +968,7 @@ function AppEnglish({ onChangeLanguage, country = 'DEFAULT' }) {
                       <h3 className="text-lg font-semibold text-blue-700">Paracetamol medications</h3>
                     </div>
                     <div className="grid gap-4 md:grid-cols-2">
-                      {medicationsData.paracetamol.map(med => (
+                      {medications.paracetamol.map(med => (
                         <MedicationCard key={med.id} medication={med} category="paracetamol" />
                       ))}
                     </div>
@@ -1000,7 +1004,7 @@ function AppEnglish({ onChangeLanguage, country = 'DEFAULT' }) {
                     </div>
                     
                     <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-                      {medicationsData.ibuprofen.map(med => (
+                      {medications.ibuprofen.map(med => (
                         <MedicationCard key={med.id} medication={med} category="ibuprofen" />
                       ))}
                     </div>
@@ -1017,7 +1021,7 @@ function AppEnglish({ onChangeLanguage, country = 'DEFAULT' }) {
                       <h3 className="text-lg font-semibold text-blue-700">Paracetamol Suppositories</h3>
                     </div>
                     <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-                      {suppositoriesData.paracetamol.map(med => (
+                      {suppositories.paracetamol.map(med => (
                         <MedicationCard key={med.id} medication={med} category="paracetamol_supp" />
                       ))}
                     </div>
@@ -1044,7 +1048,7 @@ function AppEnglish({ onChangeLanguage, country = 'DEFAULT' }) {
                     </div>
                     
                     <div className="grid gap-4 md:grid-cols-2">
-                      {suppositoriesData.diclofenac.map(med => (
+                      {suppositories.diclofenac.map(med => (
                         <MedicationCard key={med.id} medication={med} category="diclofenac_supp" />
                       ))}
                     </div>
@@ -1299,19 +1303,10 @@ function AppEnglish({ onChangeLanguage, country = 'DEFAULT' }) {
                                 Available forms: <strong>suppositories</strong>
                               </div>
                               <div className="grid gap-2 text-purple-800 text-sm">
-                                {country === 'EG' ? (
-                                  <>
-                                    <div>• Epifenac - إبيفيناك</div>
-                                    <div>• Dolphin - دولفين</div>
-                                  </>
-                                ) : (
-                                  <>
-                                    <div>• Voltaren - Voltaren</div>
-                                    <div>• Rofenac - Rofenac</div>
-                                    <div>• Diclofen</div>
-                                    <div>• Olfen</div>
-                                  </>
-                                )}
+                                <div>• Voltaren - Voltaren</div>
+                                <div>• Rofenac - Rofenac</div>
+                                <div>• Diclofen</div>
+                                <div>• Olfen</div>
                               </div>
                             </div>
                           </TabsContent>

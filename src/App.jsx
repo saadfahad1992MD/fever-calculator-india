@@ -43,6 +43,8 @@ import rofenac25SuppImg from './assets/suppositories/rofenac_25.webp'
 import voltaren12_5SuppImg from './assets/suppositories/voltaren_12_5.jpg'
 import voltaren25SuppImg from './assets/suppositories/voltaren_25.webp'
 
+// Saudi medications - replaced with Indian medications
+/*
 const medications = {
   paracetamol: [
     {
@@ -304,10 +306,12 @@ const suppositories = {
   ]
 }
 
-function App({ onChangeLanguage, country = 'DEFAULT' }) {
-  // Use Indian medications for India version (Hindi)
-  const medicationsData = medicationsIndia
-  const suppositoriesData = medicationsIndia.suppositories || {}
+*/
+
+// Use Indian medications database
+const medications = medicationsIndia;
+
+function App({ onChangeLanguage }) {
   const [weight, setWeight] = useState('') // String for text input
   const [age, setAge] = useState('') // String for text input
   const [ageUnit, setAgeUnit] = useState('') // 'months' or 'years' - empty by default
@@ -473,8 +477,8 @@ function App({ onChangeLanguage, country = 'DEFAULT' }) {
     if (!weightNum) return []
     
     // Get all suppositories from the suppositories object
-    const paracetamolSupps = suppositoriesData.paracetamol || []
-    const diclofenacSupps = suppositoriesData.diclofenac || []
+    const paracetamolSupps = suppositories.paracetamol || []
+    const diclofenacSupps = suppositories.diclofenac || []
     
     const allSuppositories = [...paracetamolSupps, ...diclofenacSupps]
     
@@ -996,7 +1000,7 @@ function App({ onChangeLanguage, country = 'DEFAULT' }) {
                       <div className="w-4 h-4 bg-blue-500 rounded-full"></div>
                     </div>
                     <div className="grid gap-4 md:grid-cols-2">
-                      {medicationsData.paracetamol.map(med => (
+                      {medications.paracetamol.map(med => (
                         <MedicationCard key={med.id} medication={med} category="paracetamol" />
                       ))}
                     </div>
@@ -1032,7 +1036,7 @@ function App({ onChangeLanguage, country = 'DEFAULT' }) {
                     </div>
                     
                     <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-                      {medicationsData.ibuprofen.map(med => (
+                      {medications.ibuprofen.map(med => (
                         <MedicationCard key={med.id} medication={med} category="ibuprofen" />
                       ))}
                     </div>
@@ -1049,7 +1053,7 @@ function App({ onChangeLanguage, country = 'DEFAULT' }) {
                       <div className="w-4 h-4 bg-blue-500 rounded-full"></div>
                     </div>
                     <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-                      {suppositoriesData.paracetamol.map(med => (
+                      {suppositories.paracetamol.map(med => (
                         <MedicationCard key={med.id} medication={med} category="paracetamol_supp" />
                       ))}
                     </div>
@@ -1076,7 +1080,7 @@ function App({ onChangeLanguage, country = 'DEFAULT' }) {
                     </div>
                     
                     <div className="grid gap-4 md:grid-cols-2">
-                      {suppositoriesData.diclofenac.map(med => (
+                      {suppositories.diclofenac.map(med => (
                         <MedicationCard key={med.id} medication={med} category="diclofenac_supp" />
                       ))}
                     </div>
@@ -1332,19 +1336,10 @@ function App({ onChangeLanguage, country = 'DEFAULT' }) {
                                 متوفر بأشكال: <strong>تحاميل</strong>
                               </div>
                               <div className="grid gap-2 text-purple-800 text-sm">
-                                {country === 'EG' ? (
-                                  <>
-                                    <div>• إبيفيناك - Epifenac</div>
-                                    <div>• دولفين - Dolphin</div>
-                                  </>
-                                ) : (
-                                  <>
-                                    <div>• فولتارين - Voltaren</div>
-                                    <div>• روفيناك - Rofenac</div>
-                                    <div>• ديكلوفين - Diclofen</div>
-                                    <div>• أولفين - Olfen</div>
-                                  </>
-                                )}
+                                <div>• فولتارين - Voltaren</div>
+                                <div>• روفيناك - Rofenac</div>
+                                <div>• ديكلوفين - Diclofen</div>
+                                <div>• أولفين - Olfen</div>
                               </div>
                             </div>
                           </TabsContent>

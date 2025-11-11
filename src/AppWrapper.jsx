@@ -2,31 +2,10 @@ import { useState, useEffect } from 'react'
 import App from './App.jsx'
 import AppEnglish from './AppEnglish.jsx'
 import { LanguageSelector } from './LanguageSelector.jsx'
-import { getUserCountry } from './utils/geolocation.js'
-import CountrySelector from './components/CountrySelector.jsx'
 
 export function AppWrapper() {
+  // Default to English for India version
   const [language, setLanguage] = useState('en')
-  const [country, setCountry] = useState('DEFAULT')
-  const [isLoadingCountry, setIsLoadingCountry] = useState(true)
-
-  // Detect user's country on mount
-  useEffect(() => {
-    async function detectCountry() {
-      try {
-        const detectedCountry = await getUserCountry()
-        setCountry(detectedCountry)
-        console.log('User country detected:', detectedCountry)
-      } catch (error) {
-        console.error('Error detecting country:', error)
-        setCountry('DEFAULT')
-      } finally {
-        setIsLoadingCountry(false)
-      }
-    }
-    
-    detectCountry()
-  }, [])
 
   // Check if language was previously selected
   useEffect(() => {
@@ -34,58 +13,33 @@ export function AppWrapper() {
     if (savedLanguage) {
       setLanguage(savedLanguage)
     }
-    // Set document direction based on current language
-    document.documentElement.dir = (savedLanguage || 'en') === 'hi' ? 'ltr' : 'ltr'
+    // Both English and Hindi are LTR (Left-to-Right)
+    document.documentElement.dir = 'ltr'
     document.documentElement.lang = savedLanguage || 'en'
   }, [])
 
   const handleSelectLanguage = (lang) => {
     setLanguage(lang)
     localStorage.setItem('selectedLanguage', lang)
-    // Set document direction - both English and Hindi are LTR
+    // Both English and Hindi are LTR
     document.documentElement.dir = 'ltr'
     document.documentElement.lang = lang
   }
 
   const handleChangeLanguage = () => {
+    // Toggle between English and Hindi
     const newLanguage = language === 'en' ? 'hi' : 'en'
     setLanguage(newLanguage)
     localStorage.setItem('selectedLanguage', newLanguage)
-    // Set document direction - both English and Hindi are LTR
+    // Both English and Hindi are LTR
     document.documentElement.dir = 'ltr'
     document.documentElement.lang = newLanguage
   }
 
-  // Show loading state while detecting country
-  if (isLoadingCountry) {
-    return (
-      <div style={{ 
-        display: 'flex', 
-        justifyContent: 'center', 
-        alignItems: 'center', 
-        height: '100vh',
-        fontSize: '18px'
-      }}>
-        {language === 'hi' ? 'लोड हो रहा है...' : 'Loading...'}
-      </div>
-    )
-  }
-
   // English is default, Hindi is alternative
-
   if (language === 'hi') {
-    return (
-      <>
-        <App onChangeLanguage={handleChangeLanguage} country={country} />
-        <CountrySelector currentCountry={country} onCountryChange={setCountry} />
-      </>
-    )
+    return <App onChangeLanguage={handleChangeLanguage} />
   }
 
-  return (
-    <>
-      <AppEnglish onChangeLanguage={handleChangeLanguage} country={country} />
-      <CountrySelector currentCountry={country} onCountryChange={setCountry} />
-    </>
-  )
+  return <AppEnglish onChangeLanguage={handleChangeLanguage} />
 }

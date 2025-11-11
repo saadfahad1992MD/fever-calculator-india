@@ -1,57 +1,143 @@
-# Fever Calculator - India Version 🇮🇳
+# Fever Calculator for Children (حاسبة جرعات أدوية خفض الحرارة للأطفال)
 
-A bilingual (English/Hindi) pediatric fever medication dosage calculator specifically designed for the Indian market.
+A professional web application for calculating medication dosages for children based on their age and weight. Built with React, Vite, and TailwindCSS.
 
 ## Features
 
-- **Bilingual Support**: Full English and Hindi language support
-- **Indian Medications**: Complete database of medications available in India including:
-  - Paracetamol: Crocin, Calpol, Dolo
-  - Ibuprofen: Ibugesic
-  - Combination: Combiflam, Ibugesic Plus, Brufen P Junior
-  - Suppositories: Suppol range
-- **Auto-Detection**: Automatically detects Indian visitors and displays India version
-- **Weight-Based Dosing**: Accurate dosage calculations based on child's weight
-- **Multiple Formulations**: Syrups, drops, and suppositories
-- **Mobile Responsive**: Works perfectly on all devices
-- **Google Analytics**: Integrated tracking for visitor analytics
+- **Accurate Dosage Calculation**: Calculate precise medication dosages based on child's age and weight
+- **Multiple Medication Types**: Support for both syrups/drops and suppositories
+- **Comprehensive Drug Database**: Includes popular medications like Paracetamol, Ibuprofen, and Diclofenac
+- **Safety Warnings**: Built-in age restrictions and safety guidelines
+- **Arabic Language Support**: Full RTL (Right-to-Left) layout and Arabic interface
+- **Responsive Design**: Works on desktop, tablet, and mobile devices
+- **Educational Content**: Medical information and FAQ sections
+
+## Supported Medications
+
+### Paracetamol (Acetaminophen)
+- Adol Drops (100mg/1ml)
+- Adol Syrup (120mg/5ml)
+- Fevadol (160mg/5ml)
+- Panadol (120mg/5ml)
+
+### Ibuprofen (Age 6+ months)
+- Nurofen (100mg/5ml)
+- Brufen (100mg/5ml)
+- Profinal (100mg/5ml)
+- Sapofen (100mg/5ml)
+
+### Suppositories
+- Various strengths of Paracetamol and Diclofenac suppositories
 
 ## Technology Stack
 
-- React 19
-- Vite 6
-- Tailwind CSS 4
-- Vercel Analytics
-- Google Analytics
+- **Frontend**: React 18
+- **Build Tool**: Vite
+- **Styling**: TailwindCSS
+- **UI Components**: Radix UI
+- **Icons**: Lucide React
+- **Language**: TypeScript/JavaScript
 
-## Local Development
+## Quick Start
 
-```bash
-# Install dependencies
-pnpm install
+1. **Clone or extract the project**
+   ```bash
+   tar -xzf fever-calculator-source-code.tar.gz
+   cd fever-calculator
+   ```
 
-# Run development server
-pnpm dev
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-# Build for production
-pnpm build
+3. **Start development server**
+   ```bash
+   npm run dev
+   ```
 
-# Preview production build
-pnpm preview
-```
+4. **Build for production**
+   ```bash
+   npm run build
+   ```
 
 ## Deployment
 
-This project is configured for automatic deployment to Vercel.
+This application can be deployed on various platforms:
+
+- **Vercel**: `vercel --prod`
+- **Netlify**: Drag `dist` folder or connect GitHub repo
+- **GitHub Pages**: Use `gh-pages` package
+- **Firebase Hosting**: `firebase deploy`
+- **Surge.sh**: `surge` from `dist` directory
+
+See `deployment-instructions.md` for detailed deployment guides.
+
+## Project Structure
+
+```
+fever-calculator/
+├── public/
+│   └── favicon.ico
+├── src/
+│   ├── assets/
+│   │   ├── medications/     # Medication images
+│   │   └── suppositories/   # Suppository images
+│   ├── components/
+│   │   └── ui/             # Reusable UI components
+│   ├── hooks/              # Custom React hooks
+│   ├── lib/                # Utility functions
+│   ├── App.jsx             # Main application component
+│   ├── main.jsx            # Application entry point
+│   └── index.css           # Global styles
+├── package.json
+├── vite.config.js
+└── tailwind.config.js
+```
+
+## Key Features Implementation
+
+### Dosage Calculation Algorithm
+- Weight-based calculations following pediatric guidelines
+- Age restrictions for different medication types
+- Maximum daily dose limits
+- Frequency recommendations
+
+### Safety Features
+- Prominent warning messages
+- Age-appropriate medication filtering
+- Drug interaction warnings
+- Professional medical disclaimer
+
+### User Experience
+- Intuitive medication selection with visual cards
+- Real-time calculation results
+- Clear dosage instructions
+- Educational medical information
 
 ## Medical Disclaimer
 
-This calculator is for informational purposes only. Always consult a healthcare professional before administering any medication to children.
+⚠️ **Important**: This application is for educational and guidance purposes only. Always consult with a healthcare professional before administering any medication to children. Do not exceed recommended dosages or duration of treatment.
 
-## Author
+## Browser Support
 
-Dr. Saad Almodameg
+- Chrome (latest)
+- Firefox (latest)
+- Safari (latest)
+- Edge (latest)
+
+## Contributing
+
+This is a medical application. Any modifications should be reviewed by medical professionals to ensure accuracy and safety.
 
 ## License
 
-All rights reserved.
+All rights reserved. This application contains proprietary medical calculations and should not be copied or redistributed without permission.
+
+## Contact
+
+For questions or support: fever.calc@gmail.com
+
+---
+
+**موقع حرارة** - Professional medication dosage calculator for children
